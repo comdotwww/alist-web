@@ -52,11 +52,13 @@ instance.interceptors.response.use(
   },
 )
 
-instance.defaults.headers.common["Authorization"] =
+export let jwtHeaderKey = import.meta.env.JWT_HEADER_KEY as string
+
+instance.defaults.headers.common[jwtHeaderKey] =
   localStorage.getItem("token") || ""
 
 export const changeToken = (token?: string) => {
-  instance.defaults.headers.common["Authorization"] = token ?? ""
+  instance.defaults.headers.common[jwtHeaderKey] = token ?? ""
   localStorage.setItem("token", token ?? "")
 }
 
