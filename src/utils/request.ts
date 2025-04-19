@@ -1,5 +1,5 @@
 import axios from "axios"
-import { api, log } from "."
+import { api, log, jwtHeaderKey } from "."
 
 const instance = axios.create({
   baseURL: api + "/api",
@@ -51,8 +51,6 @@ instance.interceptors.response.use(
     }
   },
 )
-
-export let jwtHeaderKey = import.meta.env.JWT_HEADER_KEY as string
 
 instance.defaults.headers.common[jwtHeaderKey] =
   localStorage.getItem("token") || ""

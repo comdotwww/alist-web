@@ -18,6 +18,10 @@ export let api = import.meta.env.VITE_API_URL as string
 if (window.ALIST.api) {
   api = window.ALIST.api
 }
+export let jwtHeaderKey = import.meta.env.JWT_HEADER_KEY as string
+if (window.ALIST.jwt_header_key) {
+  jwtHeaderKey = window.ALIST.jwt_header_key
+}
 if (api === "/") {
   api = location.origin + base_path
 }
